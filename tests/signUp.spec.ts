@@ -27,7 +27,7 @@ test.describe('Sign Up And Login Tests', () => {
     await expect(page.getByText('Account Created!')).toBeVisible();
   });
 
-    test.only('Register user with existing email', async ({ page }) => {
+    test('Register user with existing email', async ({ page }) => {
     await signupPage.openSignUpLoginPage();
     await signupPage.registerExistingUser(existingUser);
     await expect(page.getByText('Email Address already exist!')).toBeVisible();

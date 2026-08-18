@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/fixture.js';
 import { MainPage } from '../pages/mainPage.js';
 
 test.describe('Main Page Tests', () => {
@@ -38,9 +38,9 @@ test.describe('Main Page Tests', () => {
     await mainPage.brandsBlockDisplayed();
   });
 
-  test('Is features items displayed?', async ({}) => {
+  test('Is featured items displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.featuresItemsDisplayed();
+    await mainPage.featuredItemsDisplayed();
   });
 
   test('Is recommended item carousel displayed?', async ({}) => {

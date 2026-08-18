@@ -12,7 +12,13 @@ export class MainPage {
   readonly sliderCarouselBlock: Locator;
   readonly categoryBlock: Locator;
   readonly brandsBlock: Locator;
-  readonly featuresItems: Locator;
+  readonly featuredItems: Locator;
+  readonly firstFeaturedItem: Locator;
+  readonly secondFeaturedItem: Locator;
+  readonly firstItemAddToCartBtnFromOverlay: Locator;
+  readonly secondItemAddToCartBtnFromOverlay: Locator;
+  readonly viewCartButtonModalWindow: Locator;
+  readonly continueShoppingButton: Locator;
   readonly recommendedItemCarousel: Locator;
   readonly subscriptionField: Locator;
   readonly subscribeButton: Locator;
@@ -32,7 +38,13 @@ export class MainPage {
     this.sliderCarouselBlock = page.locator("//div[@id='slider-carousel']");
     this.categoryBlock = page.locator("//div[@class='panel-group category-products']");
     this.brandsBlock = page.locator("//div[@class='brands_products']");
-    this.featuresItems = page.locator("//div[@class='features_items']");
+    this.featuredItems = page.locator("//div[@class='features_items']");
+    this.firstFeaturedItem = page.locator("(//div[@class='single-products'])[1]");
+    this.secondFeaturedItem = page.locator("(//div[@class='single-products'])[2]");
+    this.firstItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='1'])[2]");
+    this.secondItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='2'])[2]");
+    this.viewCartButtonModalWindow = page.locator("(//a[@href='/view_cart'])[2]");
+    this.continueShoppingButton = page.getByText('Continue Shopping');
     this.recommendedItemCarousel = page.locator("//div[@class='recommended_items']");
     this.subscriptionField = page.locator("//input[@type='email']");
     this.subscribeButton = page.locator("//button[@id='subscribe']");
@@ -72,8 +84,8 @@ export class MainPage {
     await expect(this.brandsBlock).toBeVisible();
   }
 
-  async featuresItemsDisplayed() {
-    await expect(this.featuresItems).toBeVisible();
+  async featuredItemsDisplayed() {
+    await expect(this.featuredItems).toBeVisible();
   }
 
   async recommendedItemCarouselDisplayed() {
