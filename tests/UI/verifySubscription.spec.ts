@@ -1,7 +1,7 @@
-import { MainPage } from "../pages/mainPage.js";
-import {test, expect} from '../fixtures/fixture.js';
-import {existingUser} from '../data/users.js';
-import { CartPage } from "../pages/cart.js";
+import { MainPage } from '../../pages/mainPage.js';
+import {test, expect} from '../../fixtures/fixture.js';
+import {existingUser} from '../../data/users.js';
+import { CartPage } from '../../pages/cart.js';
 
 
 test.describe('Subscription Verification', () => {

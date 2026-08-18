@@ -1,17 +1,17 @@
-import {ProductsPage} from '../pages/productsPage.js';
-import { test, expect } from '../fixtures/fixture.js';
-import { ProductItemPage } from '../pages/productItemPage.js';
-import { MainPage } from '../pages/mainPage.js';
+import {ProductsPage} from '../../pages/productsPage.js';
+import { test, expect } from '../../fixtures/fixture.js';
+import { ProductPage } from '../../pages/productPage.js';
+import { MainPage } from '../../pages/mainPage.js';
 
 
 test.describe('Verify product details page', () => {
     let mainPage: MainPage;
     let productsPage: ProductsPage;
-    let productItemPage: ProductItemPage;
+    let productPage: ProductPage;
 
     test.beforeEach(async ({ page }) => {
         productsPage = new ProductsPage(page);
-        productItemPage = new ProductItemPage(page);
+        productPage = new ProductPage(page);
         mainPage = new MainPage(page);
       });
 
@@ -24,11 +24,11 @@ test.describe('Verify product details page', () => {
         await expect(productsPage.allProductsList).toBeVisible();
         await productsPage.viewFirstProduct.click();
         await expect(page).toHaveTitle('Automation Exercise - Product Details');
-        await expect(productItemPage.productName).toHaveText(/\S+/);
-        await expect(productItemPage.category).toHaveText(/\S+/);
-        await expect(productItemPage.price).toHaveText(/\S+/);
-        await expect(productItemPage.availability).toHaveText(/\S+/);
-        await expect(productItemPage.condition).toHaveText(/\S+/);
-        await expect(productItemPage.brand).toHaveText(/\S+/);
+        await expect(productPage.productName).toHaveText(/\S+/);
+        await expect(productPage.category).toHaveText(/\S+/);
+        await expect(productPage.price).toHaveText(/\S+/);
+        await expect(productPage.availability).toHaveText(/\S+/);
+        await expect(productPage.condition).toHaveText(/\S+/);
+        await expect(productPage.brand).toHaveText(/\S+/);
     });
 });

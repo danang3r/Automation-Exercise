@@ -1,6 +1,6 @@
-import { ProductsPage } from "../pages/productsPage.js";
-import { MainPage } from "../pages/mainPage.js";
-import { test, expect } from '../fixtures/fixture.js';
+import { ProductsPage } from '../../pages/productsPage.js';
+import { MainPage } from '../../pages/mainPage.js';
+import { test, expect } from '../../fixtures/fixture.js';
 
 
 test.describe('Verify Search Functionality', () => {

@@ -1,5 +1,5 @@
-import { test, expect } from '../fixtures/fixture.js';
-import { MainPage } from '../pages/mainPage.js';
+import { test, expect } from '../../fixtures/fixture.js';
+import { MainPage } from '../../pages/mainPage.js';
 
 test.describe('Main Page Tests', () => {
   let mainPage: MainPage;

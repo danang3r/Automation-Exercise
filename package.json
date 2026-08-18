@@ -1,5 +1,5 @@
 {
-  "name": "sauce-demo",
+  "name": "automation-exercise",
   "version": "1.0.0",
   "description": "Playwright tests for Automation Exercise",
   "main": "index.ts",

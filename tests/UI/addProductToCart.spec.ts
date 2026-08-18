@@ -1,7 +1,7 @@
-import { MainPage } from "../pages/mainPage.js";
-import {test, expect} from '../fixtures/fixture.js';
-import { CartPage } from "../pages/cart.js";
-import { ProductPage } from "../pages/productPage.js";
+import { MainPage } from '../../pages/mainPage.js';
+import {test, expect} from '../../fixtures/fixture.js';
+import { CartPage } from '../../pages/cart.js';
+import { ProductPage } from '../../pages/productPage.js';
 
 
 test.describe('Add Product To Cart', () => {

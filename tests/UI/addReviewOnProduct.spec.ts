@@ -1,6 +1,6 @@
-import { test, expect } from '../fixtures/fixture.js';
-import { MainPage } from '../pages/mainPage.js';
-import { ProductsPage } from '../pages/productsPage.js';
+import { test, expect } from '../../fixtures/fixture.js';
+import { MainPage } from '../../pages/mainPage.js';
+import { ProductsPage } from '../../pages/productsPage.js';
 
 
 test.describe('Add Review On Products', () => {
