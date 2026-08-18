@@ -1,7 +1,7 @@
 {
   "name": "sauce-demo",
   "version": "1.0.0",
-  "description": "Playwright tests for Sauce Demo",
+  "description": "Playwright tests for Automation Exercise",
   "main": "index.ts",
   "scripts": {
     "test": "playwright test",
@@ -16,8 +16,9 @@
   "type": "module",
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "@types/node": "^25.8.0",
+    "@types/node": "^25.9.5",
     "allure-playwright": "^3.10.2",
+    "dotenv": "^17.4.2",
     "typescript": "^6.0.3"
   }
 }

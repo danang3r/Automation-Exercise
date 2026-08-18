@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 20_000,
+  timeout: 10_000,
   expect: {
     timeout: 5_000,
   },
@@ -15,7 +15,7 @@ export default defineConfig({
       ["allure-playwright"]
     ],
   use: {
-    baseURL: 'https://www.saucedemo.com',
+    baseURL: 'https://automationexercise.com',
     headless: true,
     trace: 'on',
     video: 'on',
