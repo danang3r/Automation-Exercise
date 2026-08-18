@@ -4,7 +4,7 @@ Precondition:
   Node 14+ should be installed
 
 Clone the repository
-  git clone https://github.com/danang3r/Sauce-Demo.git
+  git clone https://github.com/danang3r/Automation-Exercise.git
 
 Execute below command:
   npm install
