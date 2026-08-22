@@ -1,5 +1,5 @@
 import { test, expect } from '../../fixtures/fixture.js';
-import { SignupLoginPage } from '../../pages/signuploginpage.js';
+import { SignupLoginPage } from '../../pages/signupLoginPage.js';
 import { validUser, invalidPasswordUser } from '../../data/users.js';
 
 

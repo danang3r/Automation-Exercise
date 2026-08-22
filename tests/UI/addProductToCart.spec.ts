@@ -1,6 +1,6 @@
 import { MainPage } from '../../pages/mainPage.js';
 import {test, expect} from '../../fixtures/fixture.js';
-import { CartPage } from '../../pages/cart.js';
+import { CartPage } from '../../pages/cartPage.js';
 import { ProductPage } from '../../pages/productPage.js';
 
 
@@ -16,7 +16,7 @@ test.describe('Add Product To Cart', () => {
         productPage = new ProductPage(page);
     });
 
-    test('Verify add product to cart', async ({page}) => {
+    test('Verify add product to cart from the main page', async ({page}) => {
         await mainPage.open();
         await mainPage.firstFeaturedItem.hover();
         await mainPage.firstItemAddToCartBtnFromOverlay.click();
@@ -27,17 +27,19 @@ test.describe('Add Product To Cart', () => {
         await mainPage.viewCartButtonModalWindow.click();
         await expect(page).toHaveTitle('Automation Exercise - Checkout');
         await expect(cartPage.product1).toBeVisible();
+        await expect(cartPage.product1Quantity).toHaveText('1');
         await expect(cartPage.product2).toBeVisible();
     });
 
-    test('Verify Product quantity in Cart', async ({page}) => {
+    test('Verify the items and quantities in the cart that were added from the product page', async ({page}) => {
         await mainPage.open();
-        await mainPage.firstFeaturedItem.click();
-        await productPage.quantityField.clear();
+        await mainPage.firstFeaturedItem.hover();
+        await mainPage.viewfirstFeaturedItem.click();
         await productPage.quantityField.fill('4');
         await productPage.addToCart.click();
         await expect(page.getByText('Your product has been added to cart.')).toBeVisible();
-        await mainPage.viewCartButtonModalWindow.click();
+        await productPage.viewCart.click();
+        await expect(page).toHaveTitle('Automation Exercise - Checkout');
         await expect(cartPage.product1).toBeVisible();
         await expect(cartPage.product1Quantity).toHaveText('4');
     });

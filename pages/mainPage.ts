@@ -14,14 +14,17 @@ export class MainPage {
   readonly brandsBlock: Locator;
   readonly featuredItems: Locator;
   readonly firstFeaturedItem: Locator;
+  readonly viewfirstFeaturedItem: Locator;
   readonly secondFeaturedItem: Locator;
   readonly firstItemAddToCartBtnFromOverlay: Locator;
   readonly secondItemAddToCartBtnFromOverlay: Locator;
   readonly viewCartButtonModalWindow: Locator;
   readonly continueShoppingButton: Locator;
   readonly recommendedItemCarousel: Locator;
+  readonly addToCartVisibleRecommendedItemsFromCarousel: Locator;
   readonly subscriptionField: Locator;
   readonly subscribeButton: Locator;
+  readonly scrollUpArrowButton: Locator;
   readonly successfulSubscribeAlert: Locator;
   
   
@@ -40,14 +43,17 @@ export class MainPage {
     this.brandsBlock = page.locator("//div[@class='brands_products']");
     this.featuredItems = page.locator("//div[@class='features_items']");
     this.firstFeaturedItem = page.locator("(//div[@class='single-products'])[1]");
+    this.viewfirstFeaturedItem = page.locator("a[href='/product_details/1']");
     this.secondFeaturedItem = page.locator("(//div[@class='single-products'])[2]");
     this.firstItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='1'])[2]");
     this.secondItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='2'])[2]");
     this.viewCartButtonModalWindow = page.locator("(//a[@href='/view_cart'])[2]");
     this.continueShoppingButton = page.getByText('Continue Shopping');
     this.recommendedItemCarousel = page.locator("//div[@class='recommended_items']");
+    this.addToCartVisibleRecommendedItemsFromCarousel = page.locator("//div[@class='item active']//a[@class='btn btn-default add-to-cart']");
     this.subscriptionField = page.locator("//input[@type='email']");
     this.subscribeButton = page.locator("//button[@id='subscribe']");
+    this.scrollUpArrowButton = page.locator("//a[@id='scrollUp']");
     this.successfulSubscribeAlert = page.locator("//div[@class='alert-success alert']");
         
   }
@@ -56,43 +62,43 @@ export class MainPage {
     await this.page.goto('/');
   }
 
-  async logoDisplayed() {
+  async logoVisible() {
     await expect(this.logo).toBeVisible();
   }
 
-  async headerDisplayed() {
+  async headerVisible() {
     await expect(this.header).toBeVisible();
   }
 
-  async productsCategoryDisplayed() {
+  async productsCategoryVisible() {
     await expect(this.productsCategory).toBeVisible();
   }
 
-  async testCasesCategoryDisplayed() {
+  async testCasesCategoryVisible() {
     await expect(this.testCasesCategory).toBeVisible();
   }
 
-  async sliderCarouselBlockDisplayed() {
+  async sliderCarouselBlockVisible() {
     await expect(this.sliderCarouselBlock).toBeVisible();
   }
 
-  async categoryBlockDisplayed() {
+  async categoryBlockVisible() {
     await expect(this.categoryBlock).toBeVisible();
   }
 
-  async brandsBlockDisplayed() {
+  async brandsBlockVisible() {
     await expect(this.brandsBlock).toBeVisible();
   }
 
-  async featuredItemsDisplayed() {
+  async featuredItemsVisible() {
     await expect(this.featuredItems).toBeVisible();
   }
 
-  async recommendedItemCarouselDisplayed() {
+  async recommendedItemCarouselVisible() {
     await expect(this.recommendedItemCarousel).toBeVisible();
   }
 
-  async subscriptionFieldDisplayed() {
+  async subscriptionFieldVisible() {
     await expect(this.subscriptionField).toBeVisible();
   }
 }

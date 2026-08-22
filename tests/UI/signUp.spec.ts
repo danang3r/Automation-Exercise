@@ -1,6 +1,6 @@
 import { existingUser } from '../../data/users.js';
 import { test, expect } from '../../fixtures/fixture.js';
-import { SignupLoginPage } from '../../pages/signuploginpage.js';
+import { SignupLoginPage } from '../../pages/signupLoginPage.js';
 
 
 test.describe('Sign Up And Login Tests', () => {

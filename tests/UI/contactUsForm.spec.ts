@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/fixture.js';
 import { MainPage } from '../../pages/mainPage.js';
-import { ContactUsPage } from '../../pages/contactUs.js';
+import { ContactUsPage } from '../../pages/contactUsPage.js';
 
 test.describe('Contact Us Form Tests', () => {
 

@@ -6,11 +6,11 @@ export class CartPage {
   readonly proceedToCheckoutButton: Locator;
   readonly product1: Locator;
   readonly product2: Locator;
+  readonly randomAddedProduct: Locator;
   readonly product1Quantity: Locator;
   readonly subscriptionField: Locator;
   readonly successfulSubscribeAlert: Locator;
   readonly subscribeButton: Locator;
-  
   
   
   constructor(page: Page) {
@@ -19,6 +19,7 @@ export class CartPage {
     this.proceedToCheckoutButton = page.getByText('Proceed To Checkout');
     this.product1 = page.locator("#product-1");
     this.product2 = page.locator("#product-2");
+    this.randomAddedProduct = page.locator(".cart_product");
     this.product1Quantity = this.product1.locator('.cart_quantity button');
     this.subscriptionField = page.locator("//input[@id='susbscribe_email']");
     this.successfulSubscribeAlert = page.locator("//div[@class='alert-success alert']");

@@ -15,51 +15,51 @@ test.describe('Main Page Tests', () => {
 
   test('Is logo displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.logoDisplayed();
+    await mainPage.logoVisible();
   });
 
   test('Is header displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.headerDisplayed();
+    await mainPage.headerVisible();
   });
 
   test('Is slider carousel block displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.sliderCarouselBlockDisplayed();
+    await mainPage.sliderCarouselBlockVisible();
   });
 
   test('Is category block displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.categoryBlockDisplayed();
+    await mainPage.categoryBlockVisible();
   });   
 
   test('Is brands block displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.brandsBlockDisplayed();
+    await mainPage.brandsBlockVisible();
   });
 
   test('Is featured items displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.featuredItemsDisplayed();
+    await mainPage.featuredItemsVisible();
   });
 
   test('Is recommended item carousel displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.recommendedItemCarouselDisplayed();
+    await mainPage.recommendedItemCarouselVisible();
   });
 
   test('Is subscription field displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.subscriptionFieldDisplayed();
+    await mainPage.subscriptionFieldVisible();
   });
 
   test('Is products category displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.productsCategoryDisplayed();
+    await mainPage.productsCategoryVisible();
   });
 
   test('Is test cases category displayed?', async ({}) => {
     await mainPage.open();
-    await mainPage.testCasesCategoryDisplayed();
+    await mainPage.testCasesCategoryVisible();
   }); 
 });
