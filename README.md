@@ -64,6 +64,12 @@ Run a specific test file:
 npx playwright test tests/UI/login.spec.ts
 ```
 
+Run API tests:
+
+```bash
+npx playwright test tests/API
+```
+
 Run tests whose title contains a specific value:
 
 ```bash
@@ -148,3 +154,8 @@ The current UI suite covers:
 - Contact form submission
 - Subscription
 - Test Cases page verification
+
+The current API suite covers:
+
+- Creating a new account with a unique email address
+- Deleting the created account in test cleanup
