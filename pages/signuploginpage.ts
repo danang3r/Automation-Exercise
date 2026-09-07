@@ -8,6 +8,7 @@ export class SignupLoginPage {
     readonly loginEmailField: Locator;
     readonly loginPasswordField: Locator;
     readonly loginButton: Locator;
+    readonly logoutLink: Locator;
 
     //New User Signup block
     readonly nameInput: Locator;
@@ -36,6 +37,7 @@ export class SignupLoginPage {
         this.loginEmailField = page.locator("//input[@data-qa='login-email']");
         this.loginPasswordField = page.locator("//input[@data-qa='login-password']");
         this.loginButton = page.locator("//button[@data-qa='login-button']");
+        this.logoutLink = page.locator("//a[normalize-space()='Logout']");
 
         //Sign Up
         this.nameInput = page.getByPlaceholder('Name');
@@ -113,6 +115,10 @@ export class SignupLoginPage {
 
     async clickLoginButton() {
         await this.loginButton.click();
+    }
+
+    async logout() {
+        await this.logoutLink.click();
     }
 
     async registerExistingUser(user: ExistingTestUser) {

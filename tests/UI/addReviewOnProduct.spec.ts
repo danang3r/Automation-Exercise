@@ -16,7 +16,7 @@ test.describe('Add Review On Products', () => {
 test('Add review on a product', async ({ page }) => {
     await mainPage.open();
     await mainPage.productsCategory.click();
-    await expect(page.url()).toContain('/products');   
+    await expect(page).toHaveURL(/\/products/);   
     await productsPage.viewFirstProduct.click();
     await expect(page.getByText('Write Your Review')).toBeVisible();
     await page.getByPlaceholder('Your Name').fill('Some Name');

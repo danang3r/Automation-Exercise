@@ -16,6 +16,7 @@
               "pages/**/*.ts",
               "utils/**/*.ts",
               "playwright.config.ts",
-              "data/user.ts"
+              "data/**/*.ts",
+              "fixtures/**/*.ts"
              ]
 }

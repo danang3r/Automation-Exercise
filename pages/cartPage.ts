@@ -11,6 +11,7 @@ export class CartPage {
   readonly subscriptionField: Locator;
   readonly successfulSubscribeAlert: Locator;
   readonly subscribeButton: Locator;
+  readonly deleteCartQuantity: Locator;
   
   
   constructor(page: Page) {
@@ -24,5 +25,6 @@ export class CartPage {
     this.subscriptionField = page.locator("//input[@id='susbscribe_email']");
     this.successfulSubscribeAlert = page.locator("//div[@class='alert-success alert']");
     this.subscribeButton = page.locator("//button[@id='subscribe']");
+    this.deleteCartQuantity = page.locator(".cart_quantity_delete");
   }
 };

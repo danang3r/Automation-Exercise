@@ -7,6 +7,7 @@ export class MainPage {
   readonly header: Locator;
   readonly productsCategory: Locator;
   readonly cartCategory: Locator;
+  readonly deleteAccountButton: Locator;
   readonly testCasesCategory: Locator;
   readonly contactUsCategory: Locator;
   readonly sliderCarouselBlock: Locator;
@@ -36,6 +37,7 @@ export class MainPage {
     this.header = page.locator("//div[@class='shop-menu pull-right']");
     this.productsCategory = page.locator("//a[@href='/products']");
     this.cartCategory = page.locator("(//a[@href='/view_cart'])[1]");
+    this.deleteAccountButton = page.getByText("Delete Account");
     this.testCasesCategory = page.locator("//a[@href='/test_cases']");
     this.contactUsCategory = page.locator("//a[@href='/contact_us']");
     this.sliderCarouselBlock = page.locator("//div[@id='slider-carousel']");

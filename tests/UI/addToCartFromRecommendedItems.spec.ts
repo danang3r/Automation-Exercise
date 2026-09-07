@@ -4,11 +4,11 @@ import { CartPage } from '../../pages/cartPage.js';
 
 test.describe('Add To Cart From Recommended Items', () => {
 
-  let mainPage: MainPage;   
+  let mainPage: MainPage;  
   let cartPage: CartPage;
 
     test.beforeEach(async ({ page }) => {
-      mainPage = new MainPage(page);
+      mainPage = new MainPage(page); 
       cartPage = new CartPage(page);
     });
 
