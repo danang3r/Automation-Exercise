@@ -144,7 +144,8 @@ execution.
 
 ## Main test coverage
 
-The current UI suite covers:
+The current UI suite covers all scenarios from the
+[Automation Exercise TEST CASES list](https://automationexercise.com/test_cases):
 
 - Login and sign-up
 - Home page element checks
@@ -155,7 +156,15 @@ The current UI suite covers:
 - Subscription
 - Test Cases page verification
 
-The current API suite covers:
+The current API suite covers all scenarios from the
+[Automation Exercise API list](https://automationexercise.com/api_list):
 
-- Creating a new account with a unique email address
-- Deleting the created account in test cleanup
+- Getting all products and brands
+- Verifying unsupported requests to products and brands endpoints
+- Searching for products, including validation when `search_product` is omitted
+- Verifying login with valid, invalid, and incomplete credentials
+- Verifying that `DELETE /api/verifyLogin` is not supported
+- Creating, updating, retrieving, and deleting user accounts
+
+Account-related tests generate unique email addresses and delete the temporary
+accounts after each scenario.
