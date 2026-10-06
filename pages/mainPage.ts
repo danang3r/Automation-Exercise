@@ -47,8 +47,8 @@ export class MainPage {
     this.firstFeaturedItem = page.locator("(//div[@class='single-products'])[1]");
     this.viewfirstFeaturedItem = page.locator("a[href='/product_details/1']");
     this.secondFeaturedItem = page.locator("(//div[@class='single-products'])[2]");
-    this.firstItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='1'])[2]");
-    this.secondItemAddToCartBtnFromOverlay = page.locator("(//a[@data-product-id='2'])[2]");
+    this.firstItemAddToCartBtnFromOverlay = this.firstFeaturedItem.locator("a[data-product-id='1']").first();
+    this.secondItemAddToCartBtnFromOverlay = this.secondFeaturedItem.locator("a[data-product-id='2']").first();
     this.viewCartButtonModalWindow = page.locator("(//a[@href='/view_cart'])[2]");
     this.continueShoppingButton = page.getByText('Continue Shopping');
     this.recommendedItemCarousel = page.locator("//div[@class='recommended_items']");

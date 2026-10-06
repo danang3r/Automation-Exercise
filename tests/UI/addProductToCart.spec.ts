@@ -34,7 +34,6 @@ test.describe('Add Product To Cart', () => {
         await expect(cartPage.product1).toBeVisible();
         await expect(cartPage.product1Quantity).toHaveText('1');
         await expect(cartPage.product2).toBeVisible();
-
     });
 
     test('Verify the items and quantities in the cart that were added from the product page', async ({page}) => {
@@ -48,7 +47,21 @@ test.describe('Add Product To Cart', () => {
         await expect(page).toHaveTitle('Automation Exercise - Checkout');
         await expect(cartPage.product1).toBeVisible();
         await expect(cartPage.product1Quantity).toHaveText('4');
+    });
 
+    test('Verify delete items from cart', async ({page}) => {
+        await mainPage.open();
+        await mainPage.firstFeaturedItem.hover();
+        await mainPage.viewfirstFeaturedItem.click();
+        await productPage.quantityField.fill('4');
+        await productPage.addToCart.click();
+        await expect(page.getByText('Your product has been added to cart.')).toBeVisible();
+        await productPage.viewCart.click();
+        await expect(page).toHaveTitle('Automation Exercise - Checkout');
+        await expect(cartPage.product1).toBeVisible();
+        await expect(cartPage.product1Quantity).toHaveText('4');
+        await cartPage.deleteCartQuantity.click();
+        await expect(page.getByText('Cart is empty! Click here to buy products.')).toBeVisible();
     });
 
     test('Verify cart items and quantities after login', async ({page}) => {
