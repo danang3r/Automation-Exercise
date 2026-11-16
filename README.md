@@ -1,82 +1,86 @@
-# WIP Automation Exercise - Playwright Tests
+# Automation Exercise — Playwright Test Automation
 
-End-to-end UI test automation project for
-[Automation Exercise](https://automationexercise.com), built with Playwright and
-TypeScript.
+A test automation project for [Automation Exercise](https://automationexercise.com), built with **Playwright Test** and **TypeScript**.
 
-## Tech stack
+The project includes UI and API automated tests, Page Object Model architecture, reusable fixtures, test data utilities, and cross-browser execution.
 
-- Playwright Test
-- TypeScript
-- Node.js and npm
-- Allure and Playwright HTML reports
+## Tech Stack
+
+- **Language:** TypeScript
+- **Test framework:** Playwright Test
+- **Runtime:** Node.js
+- **Package manager:** npm
+- **UI automation:** Playwright
+- **API testing:** Playwright APIRequestContext
+- **Design pattern:** Page Object Model (POM)
+- **Test reports:** Playwright HTML Reporter, Allure
+- **CI/CD:** GitHub Actions
+
+## Project Architecture
+
+```text
+.
+├── data/                 # Test data and image fixtures
+├── fixtures/             # Custom Playwright fixtures
+├── pages/                # Page Object Model classes and locators
+├── tests/
+│   ├── API/              # API test specifications
+│   └── UI/               # UI test specifications
+├── utils/                # Test data factories and shared utilities
+├── .github/
+│   └── workflows/        # GitHub Actions workflows
+├── playwright.config.ts  # Playwright configuration
+├── package.json          # Dependencies and npm scripts
+├── package-lock.json     # Dependency lockfile
+└── tsconfig.json         # TypeScript configuration
+```
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) with npm
-- Git
+Make sure the following tools are installed:
+
+- [Node.js](https://nodejs.org/) (LTS version)
+- npm
+- [Git](https://git-scm.com/)
 
 ## Installation
 
 Clone the repository:
 
 ```bash
-git clone git@github.com:danang3r/Automation-Exercise.git
+git clone https://github.com/danang3r/Automation-Exercise.git
 cd Automation-Exercise
 ```
 
-Install the project dependencies and Playwright browsers:
+Install dependencies:
 
 ```bash
-npm install
+npm ci
+```
+
+Install Playwright browsers:
+
+```bash
 npx playwright install
 ```
 
-## Running tests
-
-Run the entire test suite:
+To install all required browser dependencies on Linux:
 
 ```bash
-npm test || npx playwright test
+npx playwright install --with-deps
 ```
 
-Run tests in Playwright UI mode:
+## Running Tests
+
+### Run the complete test suite
 
 ```bash
-npm run test:ui
+npm test
 ```
 
-Run tests in headed mode:
+### Run UI tests
 
-```bash
-npm run test:headed || npx playwright test --headed
-```
-
-Run tests in debug mode:
-
-```bash
-npm run test:debug
-```
-
-Run a specific test file:
-
-```bash
-npx playwright test tests/UI/login.spec.ts
-```
-
-Run API tests:
-
-```bash
-npx playwright test tests/API
-```
-
-Run tests whose title contains a specific value:
-
-```bash
-npx playwright test -g "test title"
-```
-
-Run tests in a specific browser:
+Run UI tests in a specific browser:
 
 ```bash
 npx playwright test --project=chromium
@@ -84,87 +88,184 @@ npx playwright test --project=firefox
 npx playwright test --project=webkit
 ```
 
-## Type checking
+Run UI tests in all configured browsers:
 
-Check the TypeScript code without generating output files:
+```bash
+npx playwright test tests/UI
+```
+
+### Run API tests
+
+```bash
+npx playwright test --project=api
+```
+
+### Run a specific test file
+
+```bash
+npx playwright test tests/UI/login.spec.ts
+```
+
+### Run tests by title
+
+```bash
+npx playwright test -g "test title"
+```
+
+### Playwright UI mode
+
+```bash
+npm run test:ui
+```
+
+### Headed mode
+
+```bash
+npm run test:headed
+```
+
+### Debug mode
+
+```bash
+npm run test:debug
+```
+
+## Type Checking
+
+Run TypeScript type checking without generating output files:
 
 ```bash
 npm run typecheck
 ```
 
-## Reports and test artifacts
+## Playwright Configuration
 
-The project uses the Playwright HTML reporter and Allure reporter. To open the
-latest Playwright HTML report, run:
+The project uses separate Playwright projects to organize UI and API test execution.
+
+| Project | Test scope | Execution |
+|---|---|---|
+| `chromium` | UI tests | Chromium |
+| `firefox` | UI tests | Firefox |
+| `webkit` | UI tests | WebKit |
+| `api` | API tests | Single execution, without browser-specific repetition |
+
+### Test matching
+
+UI tests are selected using:
+
+```typescript
+'**/UI/**/*.@(spec|test).ts'
+```
+
+API tests are selected using:
+
+```typescript
+'**/API/**/*.spec.ts'
+```
+
+This separation ensures that UI tests run across the configured browsers, while API tests execute only once.
+
+### Execution settings
+
+- Fully parallel test execution locally.
+- A single worker in CI to reduce potential test data conflicts.
+- Two retries in CI for failed tests.
+- `test.only` is prohibited in CI.
+- Test timeout: 30 seconds.
+- Assertion timeout: 5 seconds.
+- Headless browser execution.
+- Desktop viewport: 1920 × 1080.
+
+### Debugging artifacts
+
+The following artifacts are collected when tests fail:
+
+- **Trace:** `retain-on-failure`
+- **Video:** `retain-on-failure`
+- **Screenshot:** `only-on-failure`
+
+## Reports
+
+The project uses two reporting tools.
+
+### Playwright HTML Report
+
+After test execution, open the HTML report:
 
 ```bash
 npx playwright show-report
 ```
 
-If the Allure command-line tool is installed, generate and open an Allure report
-with:
+### Allure Report
+
+Allure test results are generated in the `allure-results` directory.
+
+To generate and open the report, install the Allure CLI and run:
 
 ```bash
 allure generate ./allure-results -o ./allure-report
 allure open ./allure-report
 ```
 
-Traces, videos, and screenshots are enabled in the Playwright configuration.
-Generated artifacts are stored in ignored report and result directories.
+## Continuous Integration — GitHub Actions
 
-## Project structure
+The project uses GitHub Actions to automate test execution in a CI environment.
 
-```text
-.
-|-- data/                 # Test data and image fixtures
-|-- fixtures/             # Custom Playwright fixtures
-|-- pages/                # Page Object Model classes and locators
-|-- tests/
-|   |-- API/              # API test directory
-|   `-- UI/               # UI test specifications
-|-- utils/                # Test data factories and shared utilities
-|-- playwright.config.ts  # Playwright projects and global configuration
-|-- package.json          # Dependencies and npm scripts
-`-- tsconfig.json         # TypeScript configuration
-```
+The CI workflow is intended to:
 
-## Playwright configuration
+1. Trigger on pushes and pull requests targeting `main`.
+2. Set up the Node.js environment.
+3. Install dependencies using `npm ci`.
+4. Install Playwright browsers and their system dependencies.
+5. Run TypeScript type checking.
+6. Execute the automated test suite.
+7. Upload test reports and debugging artifacts.
 
-Tests run against `https://automationexercise.com` with a 1920 x 1080 viewport
-in the following desktop browsers:
+The workflow runs on a GitHub-hosted Ubuntu runner.
 
-- Chromium
-- Firefox
-- WebKit
+Test reports and artifacts can be downloaded from the corresponding GitHub Actions workflow run.
 
-Tests run fully in parallel. In CI, the configuration uses one worker, retries
-failed tests twice, and prevents committed focused tests (`test.only`). Custom
-fixtures generate user data and block known advertising domains during test
-execution.
+## Test Coverage
 
-## Main test coverage
+### UI Tests
 
-The current UI suite covers all scenarios from the
-[Automation Exercise TEST CASES list](https://automationexercise.com/test_cases):
+The UI test suite covers the main scenarios available on the [Automation Exercise Test Cases](https://automationexercise.com/test_cases) page:
 
-- Login and sign-up
-- Home page element checks
+- User registration and login
+- Home page element verification
 - Product search and product details
-- Adding products to the cart
+- Adding products to the shopping cart
 - Product reviews
 - Contact form submission
-- Subscription
+- Subscription functionality
 - Test Cases page verification
 
-The current API suite covers all scenarios from the
-[Automation Exercise API list](https://automationexercise.com/api_list):
+### API Tests
 
-- Getting all products and brands
-- Verifying unsupported requests to products and brands endpoints
-- Searching for products, including validation when `search_product` is omitted
-- Verifying login with valid, invalid, and incomplete credentials
-- Verifying that `DELETE /api/verifyLogin` is not supported
+The API test suite covers scenarios from the [Automation Exercise API List](https://automationexercise.com/api_list):
+
+- Retrieving all products and brands
+- Validating unsupported requests to products and brands endpoints
+- Product search and missing parameter validation
+- Login with valid, invalid, and incomplete credentials
+- Unsupported `DELETE /api/verifyLogin` request
 - Creating, updating, retrieving, and deleting user accounts
 
-Account-related tests generate unique email addresses and delete the temporary
-accounts after each scenario.
+Account-related tests generate unique email addresses and clean up temporary accounts after execution.
+
+## NPM Scripts
+
+| Script | Description |
+|---|---|
+| `npm test` | Run the complete test suite |
+| `npm run test:ui` | Open Playwright UI mode |
+| `npm run test:headed` | Run tests in headed mode |
+| `npm run test:debug` | Run tests in debug mode |
+| `npm run typecheck` | Run TypeScript type checking |
+
+---
+
+**Target application:** [Automation Exercise](https://automationexercise.com)  
+**Test framework:** Playwright Test  
+**Language:** TypeScript  
+**Repository:** [danang3r/Automation-Exercise](https://github.com/danang3r/Automation-Exercise)
